@@ -7,9 +7,9 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Menu & Carte",
-  description: "Découvrez la carte de CARBO : pâtes fraîches maison, plats italiens authentiques, carte des vins et cocktails. Restaurant italien à Carcassonne, 11 rue Trivalle.",
+  description: "Découvrez la carte d'El Bodegon : empanadas maison, asado, spécialités argentines, carte des vins et cocktails. Restaurant argentin à Toulouse, 6 rue de la Fonderie.",
   alternates: {
-    canonical: "https://www.restaurant-carbo.fr/menu",
+    canonical: "https://www.elbodegon-toulouse.fr/menu",
   },
 };
 

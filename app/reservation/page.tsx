@@ -8,9 +8,9 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Réservation",
-  description: "Réservez votre table au restaurant CARBO à Carcassonne. Réservation en ligne rapide et simple. Restaurant italien, 11 rue Trivalle, Carcassonne.",
+  description: "Réservez votre table à El Bodegon, restaurant argentin à Toulouse. Réservation en ligne rapide et simple. 6 rue de la Fonderie, 31000 Toulouse.",
   alternates: {
-    canonical: "https://www.restaurant-carbo.fr/reservation",
+    canonical: "https://www.elbodegon-toulouse.fr/reservation",
   },
 };
 

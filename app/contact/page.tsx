@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import CustomHeroBannerImage from "@/components/CustomHeroBannerImage";
 import CustomHeroBannerVideo from "@/components/CustomHeroBannerVideo";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -9,14 +8,14 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Banknote, CreditCard, Coins, Ticket } from "lucide-react";
+import { CreditCard, Coins } from "lucide-react";
 import React from "react";
 
 export const metadata: Metadata = {
   title: "Contact & Horaires",
-  description: "Contactez le restaurant CARBO à Carcassonne. 11 rue Trivalle, 11000 Carcassonne. Tél : +33 4 34 42 27 49. Ouvert mardi au samedi 12h-14h et 18h-22h.",
+  description: "Contactez El Bodegon à Toulouse. 6 rue de la Fonderie, 31000 Toulouse. Tél : +33 6 63 95 74 19. Ouvert du mardi au samedi 12h-14h30 et 18h30-22h.",
   alternates: {
-    canonical: "https://www.restaurant-carbo.fr/contact",
+    canonical: "https://www.elbodegon-toulouse.fr/contact",
   },
 };
 
@@ -26,105 +25,113 @@ function ContactPage() {
       <Navbar />
       <CustomHeroBannerVideo title="Contact" video="/img/deco/bg_video.mp4" />
 
-      <div className="w-full flex flex-col lg:flex-row justify-between lg:space-x-8 space-y-8 lg:space-y-0 bg-whiteSmokedBG">
-        <div className="lg:h-[750px] h-[1100px] lg:w-1/2 lg:pl-16 space-y-8 flex flex-col items-center justify-center lg:py-12">
+      <div className="w-full flex flex-col lg:flex-row bg-whiteSmokedBG">
 
-          <div className="flex flex-col lg:flex-row items-center justify-between lg:space-x-16 font-cormorantGaramond text-xl">
-            <div className="flex flex-col justify-between items-center space-y-12">
-              <div className="text-greenBottle flex flex-col space-y-3 items-center lg:items-start justify-center">
-                <a
-                  className=""
-                  href="https://www.google.fr/maps/place/11+Rue+Trivalle,+11000+Carcassonne/@43.2094872,2.3589394,17z/data=!3m1!4b1!4m6!3m5!1s0x12ae2c155f7dfa75:0xfab50ca890041ead!8m2!3d43.2094833!4d2.3615143!16s%2Fg%2F11c5qj1msb?entry=ttu&g_ep=EgoyMDI1MDIwNS4xIKXMDSoASAFQAw%3D%3D"
-                >
-                  11 rue Trivalle, 11000 Carcassonne
-                </a>
-                <a href="tel:+33434422749">Fixe : +33 4 34 42 27 49</a>
-              </div>
+        {/* ── Infos ────────────────────────────────────────────── */}
+        <div className="lg:w-1/2 flex flex-col items-center justify-center py-20 px-8 gap-12">
 
-              <div className="text-greenBottle w-full flex flex-col space-y-3 items-center lg:items-start justify-center">
-                <p>Modes de paiment</p>
-                <div className="flex items-center space-x-10">
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="scale-125">
-                          <CreditCard />
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent className="w-full bg-greenBottle rounded-xl text-white">
-                        <p>Carte de crédit</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+          <div className="flex flex-col items-center lg:items-start gap-2 text-center lg:text-left">
+            <span className="font-RedHatMonoLight text-goldColor tracking-widest text-xs uppercase border-b border-goldColor/30 pb-2">
+              Nous trouver
+            </span>
+            <a
+              href="https://www.google.com/maps/place/El+bodeg%C3%B3n/@43.594756,1.4411018,677m/data=!3m2!1e3!4b1!4m6!3m5!1s0x12aebd6fd0c0bdd3:0x8bb3a8d1c544df7!8m2!3d43.5947521!4d1.4436767!16s%2Fg%2F11xfqlzgcp"
+              className="font-RedHatMonoLight text-darkColor hover:text-darkColor/60 transition-colors text-sm"
+            >
+              6 rue de la Fonderie, 31000 Toulouse
+            </a>
+            <a
+              href="tel:+33663957419"
+              className="font-RedHatMonoLight text-darkColor hover:text-darkColor/60 transition-colors text-sm"
+            >
+              +33 6 63 95 74 19
+            </a>
+            <a
+              href="mailto:elbodegon@gmail.com"
+              className="font-RedHatMonoLight text-darkColor hover:text-darkColor/60 transition-colors text-sm"
+            >
+              elbodegon@gmail.com
+            </a>
+          </div>
 
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="scale-125">
-                          <Coins />
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent className="w-full bg-greenBottle rounded-xl text-white">
-                        <p>Espèces</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-
-                </div>
-              </div>
-
-              <div className="text-greenBottle flex w-full flex-col justify-center items-center lg:items-start space-y-3">
-                <p>Animaux acceptés</p>
-                <p>Accès Internet Wifi</p>
-                <p>🇬🇧 Anglais</p>
-                <p>🇪🇸 Espagnol</p>
-                <p>🇮🇹 Italien</p>
-              </div>
+          {/* Horaires */}
+          <div className="border-2 border-darkColor px-10 py-8 flex flex-col items-center gap-6 w-fit">
+            <h3 className="font-RedHatMonoLight text-darkColor text-2xl tracking-widest border-b-2 border-darkColor pb-3 w-full text-center uppercase">
+              Horaires
+            </h3>
+            <div className="flex flex-col items-center gap-1 text-center">
+              <p className="font-RedHatMonoLight text-darkColor text-xs tracking-wider uppercase">
+                Mardi – Samedi
+              </p>
+              <p className="font-RedHatMonoLight text-darkColor/70 text-sm">
+                12:00 – 14:30
+              </p>
+              <p className="font-RedHatMonoLight text-darkColor/70 text-sm">
+                18:30 – 22:00
+              </p>
             </div>
+            <div className="flex flex-col items-center gap-1 text-center border-t border-darkColor/20 pt-4 w-full">
+              <p className="font-RedHatMonoLight text-darkColor/40 text-xs tracking-wider">
+                Fermé lundi et dimanche
+              </p>
+            </div>
+          </div>
 
-            <div className="text-greenBottle border-4 w-fit mt-12 lg:mt-0 px-8 py-4 border-greenBottle flex flex-col items-center justify-center space-y-6 shadow-[-15px_15px_0_0_#192C1D]">
-              <h3 className="w-full text-center z-10 text-greenBottle border-b-4 border-greenBottle font-schoolbell text-7xl tracking-wide">
-                Horaires
-              </h3>
-
-              <div className="flex flex-col items-center justify-center">
-                <p>Juillet - Aout</p>
-                <p>Lundi - Samedi </p>
-                <p className="font-cormorantGaramond text-2xl">
-                  {" "}
-                  12:00 - 14:00 & 18:00 - 22:00
-                </p>
-              </div>
-
-              <div className="flex flex-col items-center justify-center">
-                <p>Septembre - Juin</p>
-                <p>Mardi - Samedi </p>
-                <p className="font-cormorantGaramond text-2xl">
-                  {" "}
-                  12:00 - 14:00 & 18:00 - 22:00
-                </p>
-              </div>
+          {/* Infos pratiques */}
+          <div className="flex flex-col items-center lg:items-start gap-4">
+            <span className="font-RedHatMonoLight text-goldColor tracking-widest text-xs uppercase border-b border-goldColor/30 pb-2">
+              Infos pratiques
+            </span>
+            <div className="flex items-center gap-3">
+              <span className="font-RedHatMonoLight text-darkColor/60 text-xs tracking-wider">
+                Modes de paiement :
+              </span>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="text-darkColor">
+                      <CreditCard size={18} />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-darkColor text-goldColor font-RedHatMonoLight text-xs">
+                    <p>Carte de crédit</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="text-darkColor">
+                      <Coins size={18} />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-darkColor text-goldColor font-RedHatMonoLight text-xs">
+                    <p>Espèces</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <div className="flex flex-col gap-1">
+              <p className="font-RedHatMonoLight text-darkColor/60 text-xs tracking-wider">Animaux acceptés</p>
+              <p className="font-RedHatMonoLight text-darkColor/60 text-xs tracking-wider">🇦🇷 Espagnol (Argentine)</p>
+              <p className="font-RedHatMonoLight text-darkColor/60 text-xs tracking-wider">🇬🇧 Anglais</p>
+              <p className="font-RedHatMonoLight text-darkColor/60 text-xs tracking-wider">🇫🇷 Français</p>
             </div>
           </div>
         </div>
 
-        <div className="lg:w-1/2 flex items-center justify-center lg:h-[750px] h-[500px] overflow-hidden">
+        {/* ── Google Maps ──────────────────────────────────────── */}
+        <div className="lg:w-1/2 h-[500px] lg:h-auto overflow-hidden">
           <iframe
-              title="Google Map"
-              width="100%"
-              height="100%"
-              style={{ 
-                border: 10,
-                padding: 40,
-                borderRadius: 50
-               }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2908.0001026466593!2d2.3589393763361968!3d43.20948718101556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ae2c3fe196ffff%3A0x315271cff61007ad!2s11%20Rue%20Trivalle%2C%2011000%20Carcassonne!5e0!3m2!1sfr!2sfr!4v1742408248255!5m2!1sfr!2sfr"
-              className="rounded-3xl"
-          >
-          </iframe>
+            title="El Bodegon - 6 rue de la Fonderie, Toulouse"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.2945946748!2d1.4411018!3d43.5947521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebd6fd0c0bdd3%3A0x8bb3a8d1c544df7!2sEl%20Bodeg%C3%B3n!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+          />
         </div>
       </div>
 

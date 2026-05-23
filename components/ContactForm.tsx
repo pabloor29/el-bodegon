@@ -229,75 +229,71 @@ const ReservationForm = () => {
 
   return (
     <>
-      <style jsx global>
-        {`
-          .date-past {
-            background-color: #f3f4f6 !important;
-            color: #9ca3af !important;
-            cursor: not-allowed !important;
-          }
-
-          .date-closed {
-            background-color: #fee2e2 !important;
-            color: #991b1b !important;
-            position: relative;
-          }
-
-          .date-closed::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 80%;
-            height: 2px;
-            background-color: #991b1b;
-            transform: translate(-50%, -50%) rotate(-45deg);
-          }
-
-          .react-datepicker__day--disabled {
-            cursor: not-allowed !important;
-          }
-        `}
-      </style>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .date-past {
+          background-color: #f3f4f6 !important;
+          color: #9ca3af !important;
+          cursor: not-allowed !important;
+        }
+        .date-closed {
+          background-color: #fee2e2 !important;
+          color: #991b1b !important;
+          position: relative;
+        }
+        .date-closed::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 80%;
+          height: 2px;
+          background-color: #991b1b;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .react-datepicker__day--disabled {
+          cursor: not-allowed !important;
+        }
+      ` }} />
       {succeeded ? (
-        <div className="flex flex-col lg:flex-row w-full h-96 justify-center px-4 items-center lg:space-x-3 text-greenBottle bg-whiteSmokedBG">
-          <BadgeCheck />
-          <p className="text-xl italic text-center">
+        <div className="flex flex-col lg:flex-row w-full h-96 justify-center px-4 items-center lg:space-x-3 bg-whiteSmokedBG">
+          <BadgeCheck className="text-darkColor" />
+          <p className="font-RedHatMonoLight text-darkColor text-sm text-center">
             {translation.afterSentMessage}
           </p>
         </div>
       ) : (
-        <div className="relative flex flex-col lg:flex-row justify-center items-center lg:space-x-32 space-y-20 py-16 bg-whiteSmokedBG">
+        <div className="relative flex flex-col lg:flex-row justify-center items-center lg:space-x-32 space-y-16 py-20 bg-whiteSmokedBG">
           <form
             ref={formRef}
             onSubmit={sendEmail}
-            // onSubmit={handleSubmit}
             className="space-y-8 lg:w-1/3 w-5/6 z-20"
           >
-            <input type="hidden" name="company" value="CARBO" />
-            <input type="hidden" name="emailCompany" value="restaurant.carbo11@gmail.com" />
+            <input type="hidden" name="company" value="El Bodegon" />
+            <input type="hidden" name="emailCompany" value="elbodegon@gmail.com" />
             <input type="hidden" name="reservationType" value="EN ATTENTE DE CONFIRMATION" />
-            <input type="hidden" name="reservationComment" value="Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Veuillez noter que votre réservation ne sera confirmée qu’une fois que vous aurez reçu un mail de confirmation de notre part. Nous vous remercions pour votre patience et sommes impatients de vous accueillir !" />
-            <div className="flex items-center justify-between lg:flex-row flex-col-reverse">
+            <input type="hidden" name="reservationComment" value="Nous avons bien pris en compte votre demande et elle sera traitée dans les plus brefs délais. Votre réservation ne sera confirmée qu’après réception d’un mail de notre part. Merci de votre patience, nous avons hâte de vous accueillir !" />
             <input type="hidden" name="reservationComment2" value=" " />
-              <h3 className="text-greenBottle text-7xl font-medium font-schoolbell leading-none">
+
+            <div className="flex items-center justify-between lg:flex-row flex-col-reverse gap-4">
+              <h3 className="font-RedHatMonoLight text-darkColor text-3xl tracking-wide leading-none">
                 {translation.title}
               </h3>
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="rounded-md border border-greenBottle text-xl px-2 py-1 ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="font-RedHatMonoLight border border-darkColor/30 text-sm px-2 py-1 bg-transparent text-darkColor focus:outline-none focus:border-darkColor"
               >
                 <option value="fr">🇫🇷</option>
                 <option value="en">🇬🇧</option>
-                <option value="es">🇪🇸</option>
+                <option value="es">🇦🇷</option>
                 <option value="it">🇮🇹</option>
               </select>
             </div>
+
             <div>
               <label
                 htmlFor="fullName"
-                className="block text-xl font-medium text-greenBottle font-cormorantGaramond tracking-wide"
+                className="block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
               >
                 {translation.fullNameLabel}
               </label>
@@ -307,7 +303,7 @@ const ReservationForm = () => {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                className="mt-1 block w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
+                className="mt-1 block w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor"
                 required
               />
             </div>
@@ -315,7 +311,7 @@ const ReservationForm = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block font-medium text-greenBottle font-cormorantGaramond text-xl tracking-wide"
+                className="block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
               >
                 Email
               </label>
@@ -325,26 +321,26 @@ const ReservationForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 block w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
+                className="mt-1 block w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor"
                 required
               />
             </div>
 
-            <div className=" bg-greenBottle/80 p-2 text-whiteSmokedBG">
+            <div className="bg-darkColor/90 px-4 py-3 font-RedHatMonoLight text-goldColor/80 text-xs leading-relaxed">
               {translation.alertMaxNbGuests}
-              <a 
-                href="mailto:carbo11@icloud.com"
-                className="text-blue-300"
-              > 
-                carbo11@icloud.com
+              <a
+                href="mailto:elbodegon@gmail.com"
+                className="text-goldColor underline ml-1"
+              >
+                elbodegon@gmail.com
               </a>
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-between items-center md:items-end lg:space-x-10 space-y-8 lg:space-y-0">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:gap-6 gap-8">
               <div className="lg:w-1/2 w-full">
                 <label
                   htmlFor="numberOfGuests"
-                  className="block font-medium text-greenBottle font-cormorantGaramond text-xl tracking-wide"
+                  className="block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
                 >
                   {translation.numberOfGuestsLabel}
                 </label>
@@ -356,7 +352,7 @@ const ReservationForm = () => {
                   onChange={handleChange}
                   min={1}
                   max={10}
-                  className="mt-1 block w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
+                  className="mt-1 block w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor"
                   required
                 />
               </div>
@@ -364,7 +360,7 @@ const ReservationForm = () => {
               <div className="lg:w-1/2 w-full">
                 <label
                   htmlFor="eventDate"
-                  className="w-full block font-medium text-greenBottle font-cormorantGaramond text-xl tracking-wide"
+                  className="w-full block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
                 >
                   {translation.eventDateLabel}
                 </label>
@@ -376,23 +372,12 @@ const ReservationForm = () => {
                     const month = date.getMonth();
                     const startHolidays = new Date(2025, 11, 21);
                     const endHolidays = new Date(2026, 1, 5);
-                    
-                    // Vérifier si c'est dans les vacances
                     const isHoliday = date >= startHolidays && date <= endHolidays;
-                    
-                    // Vérifier si c'est un jour fermé
                     const isSummerSunday = (day === 0 && month === 6) || (day === 0 && month === 7);
                     const isRegularClosed = (day === 0 || day === 1) && month !== 6 && month !== 7;
-
-                    // Vérifier si c'est un jour spécialement fermé
                     const isExceptionallyClosed = (date.getDate() === 12 && date.getMonth() === 4) || (date.getDate() === 13 && date.getMonth() === 4) || (date.getDate() === 14 && date.getMonth() === 4) || (date.getDate() === 15 && date.getMonth() === 4) || (date.getDate() === 16 && date.getMonth() === 4);
-
-                    // Vérifier si c'est un jour spécialement ouvert
                     const isExceptionallyOpen = (date.getDate() === 10 && date.getMonth() === 4) || (date.getDate() === 11 && date.getMonth() === 4);
-
                     const isClosed = (isHoliday || isSummerSunday || isRegularClosed) && !isExceptionallyOpen || isExceptionallyClosed;
-                    
-                    // Retourner true si le jour est sélectionnable (pas fermé)
                     return !isClosed;
                   }}
                   dayClassName={(date) => {
@@ -401,22 +386,12 @@ const ReservationForm = () => {
                     const startHolidays = new Date(2025, 11, 21);
                     const endHolidays = new Date(2026, 1, 9);
                     const isPast = date < new Date(new Date().setHours(0, 0, 0, 0));
-                    
-                    // Vérifier si c'est dans les vacances
                     const isHoliday = date >= startHolidays && date <= endHolidays;
-                    
-                    // Vérifier si c'est un jour fermé
                     const isSummerSunday = (day === 0 && month === 6) || (day === 0 && month === 7);
                     const isRegularClosed = (day === 0 || day === 1) && month !== 6 && month !== 7;
-                    
-                    // Vérifier si c'est un jour spécialement fermé
                     const isExceptionallyClosed = (date.getDate() === 12 && date.getMonth() === 4) || (date.getDate() === 13 && date.getMonth() === 4) || (date.getDate() === 14 && date.getMonth() === 4) || (date.getDate() === 15 && date.getMonth() === 4) || (date.getDate() === 16 && date.getMonth() === 4);
-
-                    // Vérifier si c'est un jour spécialement ouvert
                     const isExceptionallyOpen = (date.getDate() === 10 && date.getMonth() === 4);
-
                     const isClosed = (isHoliday || isSummerSunday || isRegularClosed) && !isExceptionallyOpen || isExceptionallyClosed;
-                    
                     if (isPast) return "date-past";
                     if (isClosed) return "date-closed";
                     return "";
@@ -425,24 +400,24 @@ const ReservationForm = () => {
                   locale="fr"
                   minDate={new Date()}
                   placeholderText="Sélectionner une date"
-                  className="w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
+                  className="w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor"
                   required
                 />
-                <input 
-                  type="hidden" 
-                  name="eventDate" 
-                  value={selectedDate ? selectedDate.toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: '2-digit', 
-                    year: 'numeric'
-                  }) : ''} 
+                <input
+                  type="hidden"
+                  name="eventDate"
+                  value={selectedDate ? selectedDate.toLocaleDateString(‘fr-FR’, {
+                    day: ‘2-digit’,
+                    month: ‘2-digit’,
+                    year: ‘numeric’
+                  }) : ‘’}
                 />
               </div>
 
               <div className="relative lg:w-1/2 w-full">
                 <label
                   htmlFor="eventTime"
-                  className="w-full block font-medium text-greenBottle font-cormorantGaramond text-xl tracking-wide"
+                  className="w-full block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
                 >
                   {translation.eventTimeLabel}
                 </label>
@@ -452,19 +427,19 @@ const ReservationForm = () => {
                   value={selectedValue}
                   onClick={toggleDropdown}
                   onChange={(e) => setSelectedValue(e.target.value)}
-                  className="mt-1 block w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
-                  placeholder="Choisir une option"
+                  className="mt-1 block w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor cursor-pointer"
+                  placeholder="Choisir une heure"
+                  readOnly
                 />
-                
                 {isOpen && (
                   <ul
-                    className="absolute w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg z-10"
+                    className="absolute w-full mt-1 bg-whiteSmokedBG border border-darkColor/20 shadow-lg z-10"
                     style={{ maxHeight: "200px", overflowY: "auto" }}
                   >
                     {options.map((option, index) => (
                       <li
                         key={index}
-                        className="px-4 py-2 cursor-pointer hover:bg-indigo-100"
+                        className="px-4 py-2 cursor-pointer font-RedHatMonoLight text-darkColor text-sm hover:bg-darkColor hover:text-goldColor transition-colors"
                         onClick={() => handleSelect(option)}
                       >
                         {option}
@@ -478,7 +453,7 @@ const ReservationForm = () => {
             <div>
               <label
                 htmlFor="specialRequests"
-                className="block font-medium text-greenBottle font-cormorantGaramond text-xl tracking-wide"
+                className="block font-RedHatMonoLight text-darkColor/70 text-xs tracking-widest uppercase mb-1"
               >
                 {translation.specialRequestsLabel}
               </label>
@@ -488,24 +463,32 @@ const ReservationForm = () => {
                 rows={4}
                 value={formData.specialRequests}
                 onChange={handleChange}
-                className="mt-1 block w-full px-4 py-2 border border-greenBottle rounded-md focus:ring focus:ring-violet-200 focus:border-violet-500"
+                className="mt-1 block w-full px-4 py-3 border border-darkColor/30 bg-transparent font-RedHatMonoLight text-darkColor text-sm focus:outline-none focus:border-darkColor resize-none"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-greenBottle hover:bg-transparent border hover:border-greenBottle text-white font-medium hover:text-greenBottle w-fit duration-200 px-4 py-3"
+              className="font-RedHatMonoLight text-xs tracking-widest bg-darkColor text-goldColor border-2 border-darkColor px-8 py-3 hover:bg-transparent hover:text-darkColor transition-colors duration-200 uppercase"
             >
               {translation.submitButton}
             </button>
           </form>
 
-          <div className="z-30">
+          <div className="z-30 flex flex-col items-center gap-4">
             <img
-              src="img/logo/CARBO-LOGO-4.webp"
-              alt=""
-              className="z-30"
+              src="img/deco/argentina-flag.webp"
+              alt="El Bodegon - Restaurant Argentin à Toulouse"
+              className="rounded-full border-4 border-goldColor w-48 h-48 object-cover shadow-2xl"
             />
+            <div className="flex flex-col items-center gap-1">
+              <p className="font-RedHatMonoLight text-darkColor text-lg border-t-2 border-b-2 border-darkColor py-1 tracking-widest">
+                EL BODEGON
+              </p>
+              <p className="font-RedHatMonoLight text-darkColor/40 text-xs tracking-wider">
+                Restaurant Argentin · Toulouse
+              </p>
+            </div>
           </div>
         </div>
       )}

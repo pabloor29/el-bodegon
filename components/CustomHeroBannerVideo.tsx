@@ -3,41 +3,33 @@ import { Variants, motion } from "framer-motion";
 import React from "react";
 
 const textVariants: Variants = {
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
+  hidden: { y: 60, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 1,
-    },
+    transition: { type: "spring", duration: 1 },
   },
 };
 
 function CustomHeroBannerVideo(props: any) {
   return (
-    <div className="h-96 relative">
-      <div className="w-full h-full z-40 absolute"></div>
+    <div className="h-80 relative">
+      <div className="w-full h-full bg-darkColor/70 z-40 absolute" />
       <video
         src={props.video}
         autoPlay
         loop
         muted
         playsInline
-        className="h-full w-full object-cover absolute z-30  pointer-events-none"
+        className="h-full w-full object-cover absolute z-30 pointer-events-none"
       />
-
-      <div className="relative z-40 h-full flex flex-col items-center justify-center leading-none">
+      <div className="relative z-40 h-full flex flex-col items-center justify-center gap-3 pt-24">
         <motion.h1
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={textVariants}
-          className="text-5xl lg:text-9xl text-white font-schoolbell
-             z-40 drop-shadow-[3px_3px_0_#192C1D]"
+          className="font-RedHatMonoLight text-goldColor text-4xl lg:text-7xl tracking-widest border-t-2 border-b-2 border-goldColor py-2 px-6"
         >
           {props.title}
         </motion.h1>

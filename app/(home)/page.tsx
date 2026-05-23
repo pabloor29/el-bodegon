@@ -6,10 +6,23 @@ import Navbar from "../../components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "CARBO - Restaurant Italien à Carcassonne | Pâtes Fraîches Maison",
-  description: "CARBO — restaurant italien à Carcassonne, 11 rue Trivalle. Pâtes fraîches maison, cuisine italienne authentique, cocktails et carte des vins. Ouvert mar-sam. Réservez en ligne !",
+  title: "El Bodegon - Restaurant Argentin à Toulouse | Cuisine Traditionnelle Argentine",
+  description: "El Bodegon, restaurant argentin authentique à Toulouse. Empanadas, asado, dulce de leche — des recettes traditionnelles préparées par des propriétaires argentins. 6 rue de la Fonderie, Toulouse. Réservez en ligne !",
+  keywords: [
+    "restaurant argentin Toulouse",
+    "El Bodegon Toulouse",
+    "cuisine argentine Toulouse",
+    "empanadas Toulouse",
+    "asado Toulouse",
+    "restaurant Buenos Aires Toulouse",
+    "restaurant argentin authentique",
+    "bodegon Toulouse",
+    "restaurant rue de la Fonderie Toulouse",
+    "cuisine traditionnelle argentine Toulouse",
+    "réservation restaurant argentin Toulouse",
+  ],
   alternates: {
-    canonical: "https://www.restaurant-carbo.fr",
+    canonical: "https://www.elbodegon-toulouse.fr",
   },
 };
 
