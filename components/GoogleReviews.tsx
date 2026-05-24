@@ -6,34 +6,34 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const reviews = [
   {
-    name: "Agat the blues",
+    name: "Herrera Juan",
     rating: 5,
     date: "il y a 3 mois",
-    text: "L’italien (Sarde) parfait entree burrate a partager ensuite risotto fagioli (pates) avec calamars et artichauts ( juste ce qu’il faut de parmessn artichauts grillés le tout tres bon) ou escalope de veau (croustillante) dessert: tiramisu a la châtaigne (délicieux) carte simple et plats parfaitement exécutés avec une pointe de raffinement. De loin le meilleur italien de Carcassonne. En plus la rue trivalle est belle donc a ne pas manquer. La cheffe est une artiste!",
+    text: "Des plats 100/100 typiques et fais maison , j'ai pu voyager en Argentine tout en restant aux Carmes , ils ont beaucoup évolué depuis leur ouverture de façon très positive, des très bons Crus argentins a déguster, le petit plus , les animations en live, aussi qualitatives que leur savoir faire en cuisine !!!! Merci",
   },
   {
-    name: "Laurine Menard",
+    name: "Ana PH",
+    rating: 5,
+    date: "il y a 3 mois",
+    text: "Super qualité, super saveurs qui m’ont fait voyager à mes origines en Argentine. Accueil super sympa et chaleureux par les propriétaires. Feliz de haber descubierto El Bodegón. Tremendo sandwich de milanesa! Lo super recomiendo a mis compatriotas!",
+  },
+  {
+    name: "Sandro Toulouse carrelage",
     rating: 5,
     date: "il y a 5 mois",
-    text: "Les plats étaient délicieux et le service très rapide. Nous étions également en bonne compagnie puisque nous avons mangé avec la mascotte du restaurant : Carbo le petit chien saucisse !",
+    text: "Excellent ! J'ai adoré, la nourriture était très savoureuse et le personnel super sympathique. C'est le meilleur endroit pour manger ARGENTIN. De plus, les portions sont généreuses et les prix restent très raisonnables. Merci encore à Reneh et Camille pour votre gentillesse à très bientôt",
   },
   {
-    name: "Caroline Jean",
-    rating: 5,
-    date: "il y a 1 an",
-    text: "Une excellente adresse à Carcassonne ! La cuisine est absolument délicieuse, avec des produits frais et faits maison, notamment les pâtes qui sont un vrai régal. L’ambiance est chaleureuse et conviviale. La décoration, soigneusement pensée, nous fait voyager en Italie dès qu’on passe la porte. Une superbe découverte, à bientôt ! 🇮🇹✨",
-  },
-  {
-    name: "Coraline Guenet",
-    rating: 5,
-    date: "il y a 1 an",
-    text: "La cuisine est vraiment bonne, ils sont passionnés et le décor est réalisé avec goût ! Sans nul doute l’une de mes nouvelles adresses préférées sur Carcassonne 😍",
-  },
-  {
-    name: "Maina Ruffier",
+    name: "Maria Marchán",
     rating: 5,
     date: "il y a 6 mois",
-    text: "Nous y avons mangé en famille et avons adoré ! Carbo est LA bonne adresse italienne à Carcassonne, de bonnes entrée bien généreuses, des pâtes fraîche faites maison et bien garnis et un succulent tiramisu ! Deux gérants très sympa et en prime la super mascotte, Carbo, qui vous fera chavirer à coup sûr !",
+    text: "Si tu veux plonger dans une ambiance argentine unique, viens manger une bonne milanesa avec du bon Malbec mendozino, pour finir avec leur glace artisanale de Dulce de Leche et le tout en écoutant un bon tango, du folklore ou bien du rock argentin avec des musiciens venus directement d'Argentine 😍🥰✨ Magnifique endroit !",
+  },
+  {
+    name: "Benjamin Pasqualini",
+    rating: 5,
+    date: "il y a 11 mois",
+    text: "Cuisine authentique argentine avec des ingrédients faits maisons et frais. Un vrai accueil et une qualité au rendez vous.",
   },
 ];
 
