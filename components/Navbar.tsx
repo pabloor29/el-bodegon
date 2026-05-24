@@ -26,6 +26,10 @@ const links = [
     href: "/formules",
   },
   {
+    label: "ÉVÉNEMENTS",
+    href: "/evenements",
+  },
+  {
     label: "CONTACT",
     href: "/contact",
   },

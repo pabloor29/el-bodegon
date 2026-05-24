@@ -6,34 +6,34 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
 const reviews = [
   {
-    name: "Agat the blues",
+    name: "Herrera Juan",
     rating: 5,
     date: "il y a 3 mois",
-    text: "L’italien (Sarde) parfait entree burrate a partager ensuite risotto fagioli (pates) avec calamars et artichauts ( juste ce qu’il faut de parmessn artichauts grillés le tout tres bon) ou escalope de veau (croustillante) dessert: tiramisu a la châtaigne (délicieux) carte simple et plats parfaitement exécutés avec une pointe de raffinement. De loin le meilleur italien de Carcassonne. En plus la rue trivalle est belle donc a ne pas manquer. La cheffe est une artiste!",
+    text: "Des plats 100/100 typiques et fais maison , j'ai pu voyager en Argentine tout en restant aux Carmes , ils ont beaucoup évolué depuis leur ouverture de façon très positive, des très bons Crus argentins a déguster, le petit plus , les animations en live, aussi qualitatives que leur savoir faire en cuisine !!!! Merci",
   },
   {
-    name: "Laurine Menard",
+    name: "Ana PH",
+    rating: 5,
+    date: "il y a 3 mois",
+    text: "Super qualité, super saveurs qui m’ont fait voyager à mes origines en Argentine. Accueil super sympa et chaleureux par les propriétaires. Feliz de haber descubierto El Bodegón. Tremendo sandwich de milanesa! Lo super recomiendo a mis compatriotas!",
+  },
+  {
+    name: "Sandro Toulouse carrelage",
     rating: 5,
     date: "il y a 5 mois",
-    text: "Les plats étaient délicieux et le service très rapide. Nous étions également en bonne compagnie puisque nous avons mangé avec la mascotte du restaurant : Carbo le petit chien saucisse !",
+    text: "Excellent ! J'ai adoré, la nourriture était très savoureuse et le personnel super sympathique. C'est le meilleur endroit pour manger ARGENTIN. De plus, les portions sont généreuses et les prix restent très raisonnables. Merci encore à Reneh et Camille pour votre gentillesse à très bientôt",
   },
   {
-    name: "Caroline Jean",
-    rating: 5,
-    date: "il y a 1 an",
-    text: "Une excellente adresse à Carcassonne ! La cuisine est absolument délicieuse, avec des produits frais et faits maison, notamment les pâtes qui sont un vrai régal. L’ambiance est chaleureuse et conviviale. La décoration, soigneusement pensée, nous fait voyager en Italie dès qu’on passe la porte. Une superbe découverte, à bientôt ! 🇮🇹✨",
-  },
-  {
-    name: "Coraline Guenet",
-    rating: 5,
-    date: "il y a 1 an",
-    text: "La cuisine est vraiment bonne, ils sont passionnés et le décor est réalisé avec goût ! Sans nul doute l’une de mes nouvelles adresses préférées sur Carcassonne 😍",
-  },
-  {
-    name: "Maina Ruffier",
+    name: "Maria Marchán",
     rating: 5,
     date: "il y a 6 mois",
-    text: "Nous y avons mangé en famille et avons adoré ! Carbo est LA bonne adresse italienne à Carcassonne, de bonnes entrée bien généreuses, des pâtes fraîche faites maison et bien garnis et un succulent tiramisu ! Deux gérants très sympa et en prime la super mascotte, Carbo, qui vous fera chavirer à coup sûr !",
+    text: "Si tu veux plonger dans une ambiance argentine unique, viens manger une bonne milanesa avec du bon Malbec mendozino, pour finir avec leur glace artisanale de Dulce de Leche et le tout en écoutant un bon tango, du folklore ou bien du rock argentin avec des musiciens venus directement d'Argentine 😍🥰✨ Magnifique endroit !",
+  },
+  {
+    name: "Benjamin Pasqualini",
+    rating: 5,
+    date: "il y a 11 mois",
+    text: "Cuisine authentique argentine avec des ingrédients faits maisons et frais. Un vrai accueil et une qualité au rendez vous.",
   },
 ];
 
@@ -64,37 +64,37 @@ export default function GoogleReviews() {
   const review = reviews[index];
 
   return (
-    <section className="w-full bg-whiteSmokedBG py-20 flex flex-col items-center">
-      <div className="flex flex-col items-center mb-10 space-y-2">
+    <section className="w-full bg-darkColor py-20 flex flex-col items-center">
+      <div className="flex flex-col items-center mb-10 space-y-3">
+        <span className="font-RedHatMonoLight text-goldColor tracking-widest text-xs uppercase border-b border-goldColor/30 pb-2">
+          Ce qu'ils en disent
+        </span>
         <div className="flex items-center space-x-3">
-          {/* Google "G" logo */}
-          <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+          <svg width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
             <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
             <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
             <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
           </svg>
-          <h2 className="text-greenBottle text-4xl font-schoolbell">Avis Google</h2>
+          <h2 className="font-RedHatMonoLight text-goldColor text-3xl tracking-wide">Avis Google</h2>
         </div>
         <div className="flex items-center space-x-1">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+            <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
           ))}
-          <span className="text-greenBottle font-cormorantGaramond text-lg ml-2">5 / 5</span>
+          <span className="font-RedHatMonoLight text-goldColor/60 text-sm ml-2">5 / 5</span>
         </div>
       </div>
 
       <div className="w-full lg:w-2/5 md:w-3/5 relative flex items-center justify-center px-4">
-        {/* Left arrow */}
         <button
           onClick={() => paginate(-1)}
           aria-label="Avis précédent"
-          className="absolute left-0 z-10 p-2 text-greenBottle hover:text-greenBottle/60 transition-colors"
+          className="absolute left-0 z-10 p-2 text-goldColor/40 hover:text-goldColor transition-colors"
         >
-          <ChevronLeft size={32} />
+          <ChevronLeft size={28} />
         </button>
 
-        {/* Card */}
         <div className="w-full overflow-hidden px-10">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
@@ -104,32 +104,29 @@ export default function GoogleReviews() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="bg-white rounded-2xl shadow-md p-8 flex flex-col space-y-4 border border-gray-100"
+              className="bg-darkColor border border-goldColor/20 p-8 flex flex-col space-y-4"
             >
-              {/* Stars */}
               <div className="flex space-x-1">
                 {[...Array(review.rating)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
+                  <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
 
-              {/* Review text */}
-              <p className="text-greenBottle font-cormorantGaramond text-xl text-justify leading-relaxed">
+              <p className="font-RedHatMonoLight text-goldColor/70 text-sm leading-relaxed">
                 &ldquo;{review.text}&rdquo;
               </p>
 
-              {/* Reviewer */}
-              <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+              <div className="flex items-center justify-between pt-2 border-t border-goldColor/10">
                 <div className="flex items-center space-x-3">
-                  <div className="w-9 h-9 rounded-full bg-greenBottle flex items-center justify-center text-white font-medium text-sm">
+                  <div className="w-8 h-8 rounded-full border border-goldColor/40 flex items-center justify-center text-goldColor font-RedHatMonoLight text-xs">
                     {review.name[0]}
                   </div>
                   <div>
-                    <p className="text-greenBottle font-medium text-sm">{review.name}</p>
-                    <p className="text-gray-400 text-xs">{review.date}</p>
+                    <p className="font-RedHatMonoLight text-goldColor text-xs">{review.name}</p>
+                    <p className="font-RedHatMonoLight text-goldColor/30 text-xs">{review.date}</p>
                   </div>
                 </div>
-                <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="opacity-40">
+                <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" className="opacity-30">
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
                   <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                   <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -140,25 +137,23 @@ export default function GoogleReviews() {
           </AnimatePresence>
         </div>
 
-        {/* Right arrow */}
         <button
           onClick={() => paginate(1)}
           aria-label="Avis suivant"
-          className="absolute right-0 z-10 p-2 text-greenBottle hover:text-greenBottle/60 transition-colors"
+          className="absolute right-0 z-10 p-2 text-goldColor/40 hover:text-goldColor transition-colors"
         >
-          <ChevronRight size={32} />
+          <ChevronRight size={28} />
         </button>
       </div>
 
-      {/* Dots */}
       <div className="flex space-x-2 mt-8">
         {reviews.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex([i, i > index ? 1 : -1])}
             aria-label={`Aller à l'avis ${i + 1}`}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              i === index ? "bg-greenBottle w-5" : "bg-greenBottle/30"
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === index ? "bg-goldColor w-6" : "bg-goldColor/20 w-1.5"
             }`}
           />
         ))}
