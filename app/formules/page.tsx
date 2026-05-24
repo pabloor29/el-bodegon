@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { createClient } from "@supabase/supabase-js";
 import CustomHeroBannerVideo from "@/components/CustomHeroBannerVideo";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -13,45 +14,39 @@ export const metadata: Metadata = {
   },
 };
 
-const formules = [
-  {
-    label: "Formule Déjeuner",
-    prix: "22€",
-    description: "Du mardi au samedi, le midi",
-    items: [
-      "1 entrée au choix",
-      "1 plat au choix",
-      "1 dessert ou café",
-    ],
-    note: "Boissons non incluses",
-  },
-  {
-    label: "Formule Dîner",
-    prix: "35€",
-    description: "Du mardi au samedi, le soir",
-    items: [
-      "1 entrée au choix",
-      "1 plat au choix",
-      "1 dessert au choix",
-    ],
-    note: "Boissons non incluses",
-  },
-  {
-    label: "Menu Dégustation",
-    prix: "55€",
-    description: "L'expérience complète",
-    items: [
-      "2 entrées à partager",
-      "1 plat signature",
-      "Dessert maison",
-      "1 verre de vin argentin",
-    ],
-    note: "Sur réservation uniquement",
-    highlight: true,
-  },
-];
+type Formule = {
+  id: string;
+  nom: string;
+  prix: number;
+  description: string;
+  elements: string[];
+};
 
-function FormulesPage() {
+async function getFormules(): Promise<Formule[]> {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      global: {
+        fetch: (url, options) =>
+          fetch(url, { ...options, cache: "no-store" }),
+      },
+    }
+  );
+
+  const { data, error } = await supabase
+    .from("formules")
+    .select("id, nom, prix, description, elements")
+    .eq("restaurant_id", process.env.RESTAURANT_ID!)
+    .eq("active", true)
+    .order("created_at", { ascending: true });
+
+  if (error || !data) return [];
+  return data as Formule[];
+}
+
+async function FormulesPage() {
+  const formules = await getFormules();
   return (
     <>
       <Navbar />
@@ -76,80 +71,35 @@ function FormulesPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
             {formules.map((f) => (
               <div
-                key={f.label}
-                className={`flex flex-col gap-6 p-8 border-2 ${
-                  f.highlight
-                    ? "border-goldColor bg-darkColor"
-                    : "border-darkColor/20 bg-transparent"
-                }`}
+                key={f.id}
+                className="flex flex-col gap-6 p-8 border-2 border-darkColor/20 bg-transparent"
               >
                 <div className="flex flex-col gap-1">
-                  {f.highlight && (
-                    <span className="font-RedHatMonoLight text-goldColor/60 text-xs tracking-widest uppercase">
-                      Recommandé
-                    </span>
-                  )}
-                  <h3
-                    className={`font-RedHatMonoLight text-xl tracking-wide ${
-                      f.highlight ? "text-goldColor" : "text-darkColor"
-                    }`}
-                  >
-                    {f.label}
+                  <h3 className="font-RedHatMonoLight text-xl tracking-wide text-darkColor">
+                    {f.nom}
                   </h3>
-                  <p
-                    className={`font-RedHatMonoLight text-xs tracking-wider ${
-                      f.highlight ? "text-goldColor/50" : "text-darkColor/40"
-                    }`}
-                  >
+                  <p className="font-RedHatMonoLight text-xs tracking-wider text-darkColor/40">
                     {f.description}
                   </p>
                 </div>
 
-                <p
-                  className={`font-RedHatMonoLight text-4xl border-t border-b py-4 ${
-                    f.highlight
-                      ? "text-goldColor border-goldColor/30"
-                      : "text-darkColor border-darkColor/20"
-                  }`}
-                >
-                  {f.prix}
-                  <span
-                    className={`text-sm ml-1 ${
-                      f.highlight ? "text-goldColor/50" : "text-darkColor/40"
-                    }`}
-                  >
-                    / pers.
-                  </span>
+                <p className="font-RedHatMonoLight text-4xl border-t border-b py-4 text-darkColor border-darkColor/20">
+                  {Number(f.prix) % 1 === 0
+                    ? `${Math.floor(f.prix)}€`
+                    : `${f.prix}€`}
+                  <span className="text-sm ml-1 text-darkColor/40">/ pers.</span>
                 </p>
 
                 <ul className="flex flex-col gap-2">
-                  {f.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span
-                        className={`mt-0.5 ${
-                          f.highlight ? "text-goldColor" : "text-darkColor/40"
-                        }`}
-                      >
-                        –
-                      </span>
-                      <span
-                        className={`font-RedHatMonoLight text-sm ${
-                          f.highlight ? "text-goldColor/70" : "text-darkColor/70"
-                        }`}
-                      >
-                        {item}
+                  {f.elements.map((element) => (
+                    <li key={element} className="flex items-start gap-2">
+                      <span className="mt-0.5 text-darkColor/40">–</span>
+                      <span className="font-RedHatMonoLight text-sm text-darkColor/70">
+                        {element}
                       </span>
                     </li>
                   ))}
                 </ul>
-
-                <p
-                  className={`font-RedHatMonoLight text-xs tracking-wider mt-auto ${
-                    f.highlight ? "text-goldColor/30" : "text-darkColor/30"
-                  }`}
-                >
-                  {f.note}
-                </p>
               </div>
             ))}
           </div>
