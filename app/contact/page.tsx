@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { createClient } from "@supabase/supabase-js";
 import CustomHeroBannerVideo from "@/components/CustomHeroBannerVideo";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -19,7 +20,48 @@ export const metadata: Metadata = {
   },
 };
 
-function ContactPage() {
+const DAYS = [
+  "Lundi",
+  "Mardi",
+  "Mercredi",
+  "Jeudi",
+  "Vendredi",
+  "Samedi",
+  "Dimanche",
+];
+
+type DayHours = {
+  midi: { debut: string; fin: string };
+  soir: { debut: string; fin: string };
+  closedDay: boolean;
+  closedDiner: boolean;
+  closedLunch: boolean;
+};
+
+async function getOpeningHours(): Promise<DayHours[] | null> {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      global: {
+        fetch: (url, options) =>
+          fetch(url, { ...options, cache: "no-store" }),
+      },
+    }
+  );
+
+  const { data, error } = await supabase
+    .from("opening_hours")
+    .select("hours")
+    .eq("restaurant_id", process.env.RESTAURANT_ID!)
+    .single();
+
+  if (error || !data) return null;
+  return data.hours as DayHours[];
+}
+
+async function ContactPage() {
+  const hours = await getOpeningHours();
   return (
     <>
       <Navbar />
@@ -59,22 +101,42 @@ function ContactPage() {
             <h3 className="font-RedHatMonoLight text-darkColor text-2xl tracking-widest border-b-2 border-darkColor pb-3 w-full text-center uppercase">
               Horaires
             </h3>
-            <div className="flex flex-col items-center gap-1 text-center">
-              <p className="font-RedHatMonoLight text-darkColor text-xs tracking-wider uppercase">
-                Mardi – Samedi
-              </p>
-              <p className="font-RedHatMonoLight text-darkColor/70 text-sm">
-                12:00 – 14:30
-              </p>
-              <p className="font-RedHatMonoLight text-darkColor/70 text-sm">
-                18:30 – 22:00
-              </p>
-            </div>
-            <div className="flex flex-col items-center gap-1 text-center border-t border-darkColor/20 pt-4 w-full">
+            {hours ? (
+              <ul className="w-full space-y-3">
+                {DAYS.map((day, i) => {
+                  const d = hours[i];
+                  return (
+                    <li key={day} className="flex justify-between items-start gap-8">
+                      <span className="font-RedHatMonoLight text-darkColor/50 uppercase tracking-wider text-xs w-24">
+                        {day}
+                      </span>
+                      {d.closedDay ? (
+                        <span className="font-RedHatMonoLight text-darkColor/25 md:text-base text-sm tracking-wider">
+                          Fermé
+                        </span>
+                      ) : (
+                        <div className="flex flex-col items-end gap-0.5">
+                          {!d.closedLunch && d.midi.debut && (
+                            <span className="font-RedHatMonoLight text-darkColor md:text-base text-sm">
+                              {d.midi.debut} – {d.midi.fin}
+                            </span>
+                          )}
+                          {!d.closedDiner && d.soir.debut && (
+                            <span className="font-RedHatMonoLight text-darkColor md:text-base text-sm">
+                              {d.soir.debut} – {d.soir.fin}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
               <p className="font-RedHatMonoLight text-darkColor/40 text-xs tracking-wider">
-                Fermé lundi et dimanche
+                Horaires non disponibles
               </p>
-            </div>
+            )}
           </div>
 
           {/* Infos pratiques */}
