@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Notre Histoire",
-  description: "Découvrez l'histoire de CARBO : Louis, Louisa et leur passion pour la cuisine italienne authentique à Carcassonne. Un restaurant familial et chaleureux au cœur de la cité.",
+  description: "Découvrez l'histoire d'El Bodegon : des propriétaires argentins passionnés qui ont apporté la vraie cuisine de Buenos Aires au cœur de Toulouse. Un restaurant authentique, chaleureux et convivial.",
   alternates: {
-    canonical: "https://www.restaurant-carbo.fr/apropos",
+    canonical: "https://www.elbodegon-toulouse.fr/apropos",
   },
 };
 

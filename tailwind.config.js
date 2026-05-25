@@ -25,11 +25,9 @@ module.exports = {
       "9xl": "8rem",
     },
     fontFamily: {
-      cormorantGaramond: ["Cormorant Garamond", "ui-serif"],
-      ttInterphasesMono: ["TT Interphases Pro Mono Trl", "ui-serif"],
-      scandiloverScript: ["Scandilover Script", "ui-serif"],
-      schoolbell: ["Schoolbell", "ui-serif"],
-      anton: ["Anton", "ui-serif"],
+      RedHatMonoRegular: ["RedHatMono-Regular", "ui-serif"],
+      RedHatMonoBold: ["RedHatMono-Bold", "ui-serif"],
+      RedHatMonoLight: ["RedHatMono-Light", "ui-serif"],
     },
     container: {
       center: true,
@@ -48,6 +46,10 @@ module.exports = {
         greenBottle: '#192C1D',
         pinkCarbo: '#F7DAD9',
         whiteSmokedBG: '#FEF8ED',
+
+        darkColor: '#302b29',
+        blueSky: '#699dbf',
+        goldColor: '#d4a859',
       },
       borderRadius: {
         lg: "var(--radius)",
