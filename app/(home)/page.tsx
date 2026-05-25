@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "../../components/Footer";
+
+export const dynamic = 'force-dynamic';
 import HeroBanner from "../../components/HeroBanner";
 import MainPage from "../../components/MainPage";
 import Navbar from "../../components/Navbar";
