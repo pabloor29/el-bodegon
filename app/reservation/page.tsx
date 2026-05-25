@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@supabase/supabase-js";
+
+export const dynamic = 'force-dynamic';
 import ContactForm from "@/components/ContactForm";
 import type { DayHours } from "@/components/ContactForm";
 import CustomHeroBannerVideo from "@/components/CustomHeroBannerVideo";
