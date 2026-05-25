@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { createClient } from "@supabase/supabase-js";
+
+export const dynamic = 'force-dynamic';
 import CustomHeroBannerVideo from "@/components/CustomHeroBannerVideo";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
